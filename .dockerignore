@@ -1,0 +1,9 @@
+# Ignore all
+**
+
+# Exclude
+!homework_10_2_zhanat_darmenov/
+!first_app/
+!templates
+!manage.py
+!requirements.txt
