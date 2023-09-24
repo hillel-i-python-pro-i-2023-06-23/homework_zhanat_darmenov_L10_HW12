@@ -1,7 +1,7 @@
 # If Requirements are not installing, use New Interprener.
 
 # Generate Fake User-info:
-Faker==19.4.0
+Faker==19.6.2
 
 # Read web_json files:
 # requests==2.31.0
@@ -16,10 +16,10 @@ pre-commit==3.4.0
 flake8==6.1.0
 
 # Formatter. Apply codestyle:
-black==23.7.0
+black==23.9.1
 
 # A tool (and pre-commit hook) to automatically upgrade syntax for newer versions of the language:
-pyupgrade==3.10.1
+pyupgrade==3.13.0
 
 # Remove unused imports & variables:
 autoflake==2.2.1
