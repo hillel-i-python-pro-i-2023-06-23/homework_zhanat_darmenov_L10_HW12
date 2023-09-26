@@ -1,4 +1,4 @@
-# HW12/HW12/models/contact.py
+# phonebook/models/contact.py
 
 from django.db import models
 
@@ -16,3 +16,10 @@ class Contact(models.Model):
         blank=False,
         null=False,
     )
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+    # Magic method to represent the object as a unique string.
+    # Used for Debug:
+    __repr__ = __str__
