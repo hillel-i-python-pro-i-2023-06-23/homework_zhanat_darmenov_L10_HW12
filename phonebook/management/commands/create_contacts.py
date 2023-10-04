@@ -18,7 +18,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         amount: int = options["amount"]
-        print(f"amount: {amount}")
         logger = logging.getLogger("django")
 
         queryset = Contact.objects.all()
