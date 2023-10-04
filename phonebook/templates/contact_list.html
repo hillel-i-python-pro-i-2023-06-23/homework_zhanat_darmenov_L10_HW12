@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact List</title>
+</head>
+<body>
+    <h1>Contact List</h1>
+
+    {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <ul>
+        {% for contact in contacts %}
+        <li>{{ contact.name }} - {{ contact.phone }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
