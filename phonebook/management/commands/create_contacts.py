@@ -18,12 +18,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         amount: int = options["amount"]
-
+        print(f"amount: {amount}")
         logger = logging.getLogger("django")
 
         queryset = Contact.objects.all()
-
-        logger.info(f"Current amount of Contacts before: {queryset.count()}")
+        logger.info(f"Current amount of Contacts before: {queryset.count()}, Contacts: {queryset}")
 
         for person in generate_contacts(amount=amount):
             person.is_auto_generated = True
@@ -32,4 +31,4 @@ class Command(BaseCommand):
         # Refresh the queryset to get the updated count
         queryset = Contact.objects.all()
 
-        logger.info(f"Current amount of Contacts after: {queryset.count()}")
+        logger.info(f"Current amount of Contacts after: {queryset.count()}, Contacts: {queryset}")
