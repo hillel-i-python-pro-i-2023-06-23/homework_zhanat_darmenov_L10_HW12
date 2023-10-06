@@ -3,7 +3,7 @@
 
 # Exclude
 !homework_zhanat_darmenov_L10_HW12/
-!HW12/
-!templates
-!HW12/manage.py
+!phonebook/
 !requirements.txt
+!manage.py
+!Makefile
