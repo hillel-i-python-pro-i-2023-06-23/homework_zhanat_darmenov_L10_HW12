@@ -13,6 +13,7 @@ def home_page(request):
         amount = int(request.POST.get("amount"))
         generated_contacts = list(generate_contacts(amount))
         save_contacts(generated_contacts)
+
         # Show only newly generated Contacts:
         return render(request, "contact_list.html", {"contacts": generated_contacts})
 

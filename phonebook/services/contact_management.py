@@ -19,7 +19,7 @@ def generate_contacts(amount: int) -> Iterator[Contact]:
         yield generate_contact()
 
 
-def save_contacts(contacts: Iterator[Contact]):
+def save_contacts(contacts):
     for person in contacts:
         person.is_auto_generated = True
         person.save()
