@@ -3,7 +3,8 @@
 
 import logging
 from django.core.management.base import BaseCommand  # , CommandError
-from phonebook.models import Contact
+
+# from phonebook.models import Contact
 from phonebook.services import contact_management
 
 
@@ -20,7 +21,7 @@ class Command(BaseCommand):
         amount: int = options["amount"]
         logger = logging.getLogger("django")
 
-        queryset = Contact.objects.all()
+        queryset = contact_management.get_all_contacts()
         logger.info(f"Current amount of Contacts before: {queryset.count()}, Contacts: {queryset}")
 
         # Go to phonebook/services/contact_generation.py: generate_contacts()
@@ -33,6 +34,6 @@ class Command(BaseCommand):
         contact_management.save_contacts(contacts=contacts)
 
         # Refresh the queryset to get the updated count
-        queryset = Contact.objects.all()
+        queryset = contact_management.get_all_contacts()
 
         logger.info(f"Current amount of Contacts after: {queryset.count()}, Contacts: {queryset}")

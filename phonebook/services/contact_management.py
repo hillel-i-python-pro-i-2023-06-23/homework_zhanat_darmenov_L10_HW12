@@ -23,3 +23,7 @@ def save_contacts(contacts: Iterator[Contact]):
     for person in contacts:
         person.is_auto_generated = True
         person.save()
+
+
+def get_all_contacts():
+    return Contact.objects.all()
