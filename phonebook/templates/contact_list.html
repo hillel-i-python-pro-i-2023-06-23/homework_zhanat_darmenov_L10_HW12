@@ -15,5 +15,17 @@
         <li>{{ contact.name }} - {{ contact.phone }}</li>
         {% endfor %}
     </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Show All">
+    </form>
+
+    <br>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Return">
+    </form>
 </body>
 </html>
