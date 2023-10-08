@@ -4,7 +4,7 @@
 import logging
 from django.core.management.base import BaseCommand  # , CommandError
 from phonebook.models import Contact
-from phonebook.services.contact_generation import generate_contacts
+from phonebook.services import contact_management
 
 
 class Command(BaseCommand):
@@ -23,9 +23,14 @@ class Command(BaseCommand):
         queryset = Contact.objects.all()
         logger.info(f"Current amount of Contacts before: {queryset.count()}, Contacts: {queryset}")
 
-        for person in generate_contacts(amount=amount):
-            person.is_auto_generated = True
-            person.save()
+        # Go to phonebook/services/contact_generation.py: generate_contacts()
+        # for person in generate_contacts(amount=amount):
+        #     person.is_auto_generated = True
+        #     person.save()
+
+        contacts = contact_management.generate_contacts(amount=amount)
+
+        contact_management.save_contacts(contacts=contacts)
 
         # Refresh the queryset to get the updated count
         queryset = Contact.objects.all()

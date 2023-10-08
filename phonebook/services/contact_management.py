@@ -1,4 +1,4 @@
-# phonebook/services/contact_generation.py
+# phonebook/services/contact_management.py
 
 from collections.abc import Iterator
 from faker import Faker
@@ -17,3 +17,9 @@ def generate_contact() -> Contact:
 def generate_contacts(amount: int) -> Iterator[Contact]:
     for _ in range(amount):
         yield generate_contact()
+
+
+def save_contacts(contacts: Iterator[Contact]):
+    for person in contacts:
+        person.is_auto_generated = True
+        person.save()

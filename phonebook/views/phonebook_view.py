@@ -3,7 +3,7 @@
 from django.shortcuts import render  # , redirect
 
 # from django.http import HttpResponse
-from phonebook.services.contact_generation import generate_contacts
+from phonebook.services.contact_management import generate_contacts
 
 # from phonebook.models import Contact
 
