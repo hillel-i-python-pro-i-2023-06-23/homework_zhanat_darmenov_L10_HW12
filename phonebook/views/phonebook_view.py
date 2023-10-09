@@ -2,7 +2,12 @@
 
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from phonebook.services.contact_management import generate_contacts, save_contacts, get_all_contacts
+from phonebook.services.contact_management import (
+    generate_contacts,
+    save_contacts,
+    get_all_contacts,
+    delete_all_contacts,
+)
 
 
 def home_page(request):
@@ -23,8 +28,20 @@ def contact_list(request):
             return render(request, "contact_list.html", {"contacts": get_all_contacts()})
         if request.POST.get("action") == "Return":
             return redirect(home_page)
+        if request.POST.get("action") == "Delete All":
+            return redirect(reverse("delete_contacts"))
 
     # Generate, save & show only new Contacts:
     generated_contacts = list(generate_contacts(amount))
     save_contacts(generated_contacts)
     return render(request, "contact_list.html", {"contacts": generated_contacts})
+
+
+def delete_contacts(request):
+    if request.method == "POST":
+        if request.POST.get("action") == "Delete All":
+            delete_all_contacts()
+            return render(request, "contact_list.html", {"contacts": get_all_contacts()})
+        if request.POST.get("action") == "Return":
+            return redirect(home_page)
+    return render(request, "contact_list.html")

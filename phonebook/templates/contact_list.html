@@ -25,6 +25,13 @@
 
     <form method="post">
         {% csrf_token %}
+        <input type="submit" name="action" value="Delete All">
+    </form>
+
+    <br>
+
+    <form method="post">
+        {% csrf_token %}
         <input type="submit" name="action" value="Return">
     </form>
 </body>

@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from phonebook.views.phonebook_view import home_page, contact_list
+from phonebook.views.phonebook_view import home_page, contact_list, delete_contacts
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home_page, name="home_page"),
     path("contacts/", contact_list, name="contact_list"),
+    path("contacts/delete/", delete_contacts, name="delete_contacts"),
 ]
