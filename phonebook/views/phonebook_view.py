@@ -15,7 +15,7 @@ def home_page(request):
 
 
 def contact_list(request):
-    amount = request.GET.get("amount", 1)  # Default to 1 if 'amount' is not provided
+    amount = request.GET.get("amount", 1)  # Default: 1
     amount = int(amount)
 
     if request.method == "POST":

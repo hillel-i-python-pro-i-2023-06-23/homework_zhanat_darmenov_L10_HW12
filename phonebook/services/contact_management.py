@@ -27,3 +27,7 @@ def save_contacts(contacts):
 
 def get_all_contacts():
     return Contact.objects.all()
+
+
+def delete_all_contacts():
+    return Contact.objects.filter(is_auto_generated=True).delete()

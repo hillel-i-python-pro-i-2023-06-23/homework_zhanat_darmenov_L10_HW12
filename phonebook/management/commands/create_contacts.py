@@ -24,13 +24,7 @@ class Command(BaseCommand):
         queryset = contact_management.get_all_contacts()
         logger.info(f"Current amount of Contacts before: {queryset.count()}, Contacts: {queryset}")
 
-        # Go to phonebook/services/contact_generation.py: generate_contacts()
-        # for person in generate_contacts(amount=amount):
-        #     person.is_auto_generated = True
-        #     person.save()
-
         contacts = contact_management.generate_contacts(amount=amount)
-
         contact_management.save_contacts(contacts=contacts)
 
         # Refresh the queryset to get the updated count
