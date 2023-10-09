@@ -12,7 +12,7 @@
 
     <ul>
         {% for contact in contacts %}
-        <li>{{ contact.name }} - {{ contact.phone }}</li>
+        <li><a href="{% url 'single_user' contact.id %}">{{ contact.name }}</a> - {{ contact.phone }}</li>
         {% endfor %}
     </ul>
 

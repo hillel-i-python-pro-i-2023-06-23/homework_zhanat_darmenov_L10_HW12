@@ -1,7 +1,8 @@
 # phonebook/views/phonebook_view.py
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from phonebook.models import Contact
 from phonebook.services.contact_management import (
     generate_contacts,
     save_contacts,
@@ -45,3 +46,22 @@ def delete_contacts(request):
         if request.POST.get("action") == "Return":
             return redirect(home_page)
     return render(request, "contact_list.html")
+
+
+def show_single_user(request, contact_id):
+    contact = get_object_or_404(Contact, id=contact_id)
+
+    if request.method == "POST":
+        if request.POST.get("action") == "Change Info":
+            # Handle the "Change Info" action here, e.g., redirect to an edit page
+            # return redirect(reverse("edit_contact", args=[contact_id]))
+            ...
+        elif request.POST.get("action") == "Delete Contact":
+            # Handle the "Delete Contact" action here
+            # delete_contact(contact_id)
+            # return redirect(reverse("contact_list"))
+            ...
+        elif request.POST.get("action") == "Return to Start":
+            return redirect(home_page)
+
+    return render(request, "single_user.html", {"contact": contact})

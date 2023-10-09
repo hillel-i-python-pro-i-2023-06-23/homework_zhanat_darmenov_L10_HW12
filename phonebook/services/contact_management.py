@@ -31,3 +31,7 @@ def get_all_contacts():
 
 def delete_all_contacts():
     return Contact.objects.filter(is_auto_generated=True).delete()
+
+
+def delete_contact(contact_id):
+    return Contact.objects.filter(id=contact_id).delete()
