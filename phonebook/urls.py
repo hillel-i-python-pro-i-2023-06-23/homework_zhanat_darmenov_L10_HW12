@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from phonebook.views.phonebook_view import home_page, contact_list, delete_contacts, show_single_user
+from phonebook.views.phonebook_view import (
+    home_page,
+    contact_list,
+    delete_contacts,
+    show_single_user,
+    alter_user,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,4 +30,5 @@ urlpatterns = [
     path("contacts/", contact_list, name="contact_list"),
     path("contacts/delete/", delete_contacts, name="delete_contacts"),
     path("contacts/single-user/<int:contact_id>/", show_single_user, name="single_user"),
+    path("contacts/alter-user/<int:contact_id>/", alter_user, name="alter_user"),
 ]

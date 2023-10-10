@@ -28,9 +28,11 @@ def contact_list(request):
     if request.method == "POST":
         if request.POST.get("action") == "Show All":
             return render(request, "contact_list.html", {"contacts": get_all_contacts()})
-        if request.POST.get("action") == "Return":
+
+        elif request.POST.get("action") == "Return":
             return redirect(home_page)
-        if request.POST.get("action") == "Delete All":
+
+        elif request.POST.get("action") == "Delete All":
             return redirect(reverse("delete_contacts"))
 
     # Generate, save & show only new Contacts:
@@ -44,19 +46,21 @@ def delete_contacts(request):
         if request.POST.get("action") == "Delete All":
             delete_all_contacts()
             return render(request, "contact_list.html", {"contacts": get_all_contacts()})
-        if request.POST.get("action") == "Return":
+
+        elif request.POST.get("action") == "Return":
             return redirect(home_page)
     return render(request, "contact_list.html")
 
 
 def show_single_user(request, contact_id):
     contact = get_object_or_404(Contact, id=contact_id)
+    print(f"{type(contact)} !!!!!!!!!!!!!!!!!!!!!!!!!!! type")
 
     if request.method == "POST":
         if request.POST.get("action") == "Change Info":
-            # Handle the "Change Info" action here, e.g., redirect to an edit page
-            # return redirect(reverse("edit_contact", args=[contact_id]))
-            ...
+            return redirect(reverse("alter_user", args=[contact_id]))
+            # return render(request, "alter_user.html", {"contact": contact})
+
         elif request.POST.get("action") == "Delete Contact":
             delete_contact(contact_id)
             return redirect(reverse("contact_list"))
@@ -65,3 +69,19 @@ def show_single_user(request, contact_id):
             return redirect(home_page)
 
     return render(request, "single_user.html", {"contact": contact})
+
+
+def alter_user(request, contact_id):
+    contact = get_object_or_404(Contact, id=contact_id)
+
+    if request.method == "POST":
+        if request.POST.get("action") == "Submit Info":
+            contact.name = request.POST.get("name")
+            contact.phone = request.POST.get("phone")
+            contact.save()
+            return redirect(reverse("single_user", args=[contact_id]))
+
+        elif request.POST.get("action") == "Return to Start":
+            return redirect("home_page")
+
+    return render(request, "alter_user.html", {"contact": contact})
