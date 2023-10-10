@@ -8,6 +8,7 @@ from phonebook.services.contact_management import (
     save_contacts,
     get_all_contacts,
     delete_all_contacts,
+    delete_contact,
 )
 
 
@@ -21,7 +22,7 @@ def home_page(request):
 
 
 def contact_list(request):
-    amount = request.GET.get("amount", 1)  # Default: 1
+    amount = request.GET.get("amount", 0)
     amount = int(amount)
 
     if request.method == "POST":
@@ -57,10 +58,9 @@ def show_single_user(request, contact_id):
             # return redirect(reverse("edit_contact", args=[contact_id]))
             ...
         elif request.POST.get("action") == "Delete Contact":
-            # Handle the "Delete Contact" action here
-            # delete_contact(contact_id)
-            # return redirect(reverse("contact_list"))
-            ...
+            delete_contact(contact_id)
+            return redirect(reverse("contact_list"))
+
         elif request.POST.get("action") == "Return to Start":
             return redirect(home_page)
 
