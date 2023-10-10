@@ -33,7 +33,8 @@ def contact_list(request):
             return redirect(home_page)
 
         elif request.POST.get("action") == "Delete All":
-            return redirect(reverse("delete_contacts"))
+            delete_all_contacts()
+            return render(request, "contact_list.html", {"contacts": get_all_contacts()})
 
     # Generate, save & show only new Contacts:
     generated_contacts = list(generate_contacts(amount))
@@ -41,15 +42,18 @@ def contact_list(request):
     return render(request, "contact_list.html", {"contacts": generated_contacts})
 
 
-def delete_contacts(request):
-    if request.method == "POST":
-        if request.POST.get("action") == "Delete All":
-            delete_all_contacts()
-            return render(request, "contact_list.html", {"contacts": get_all_contacts()})
-
-        elif request.POST.get("action") == "Return":
-            return redirect(home_page)
-    return render(request, "contact_list.html")
+# def delete_contacts(request):
+#     if request.method == "POST":
+#         if request.POST.get("action") == "Show All":
+#             return redirect(reverse("contact_list"))
+#
+#         elif request.POST.get("action") == "Delete All":
+#             delete_all_contacts()
+#             return render(request, "contact_list.html", {"contacts": get_all_contacts()})
+#
+#         elif request.POST.get("action") == "Return":
+#             return redirect(home_page)
+#     return render(request, "contact_list.html")
 
 
 def show_single_user(request, contact_id):
