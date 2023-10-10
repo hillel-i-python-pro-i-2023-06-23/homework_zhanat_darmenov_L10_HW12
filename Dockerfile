@@ -28,7 +28,7 @@ USER ${USER}
 
 VOLUME ${WORKDIR}/db
 
-# Apply Django migrations
+# Apply Django migrations:
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 
