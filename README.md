@@ -4,7 +4,7 @@
 # Flask application
 
 ---
-![Main workflow](https://github.com/hillel-i-python-pro-i-2023-06-23/homework_zhanat_darmenov_L10_HW12/tree/Pull_Request_L10_HW13/actions/workflows/main-workflow.yml/badge.svg)
+![Main workflow](https://github.com/hillel-i-python-pro-i-2023-06-23/homework_zhanat_darmenov_L10_HW12/tree/Pull_Request_L12_HW18_requirements/actions/workflows/main-workflow.yml/badge.svg)
 
 ## 🏠 Homework
 
