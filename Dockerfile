@@ -14,12 +14,10 @@ RUN apt update && apt upgrade -y
 RUN apt install -y curl
 
 # Copy the requirements file separately to leverage Docker cache
-COPY --chown=${USER} requirements.txt requirements.txt
-COPY --chown=${USER} requirements_test.txt requirements_test.txt
+COPY --chown=${USER} requirements_base.txt requirements_base.txt
 
 RUN pip install --upgrade pip && \
-    pip install --requirement requirements.txt && \
-    pip install --requirement requirements_test.txt
+    pip install --requirement requirements_base.txt
 
 # Copy the application code into the container
 COPY --chown=${USER} ./phonebook phonebook

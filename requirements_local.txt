@@ -21,3 +21,6 @@ pyupgrade==3.13.0
 
 # Remove unused imports & variables:
 autoflake==2.2.1
+
+# We can refer to another requirements file:
+--requirement requirements_base.txt

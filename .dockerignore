@@ -4,7 +4,7 @@
 # Exclude
 !homework_zhanat_darmenov_L10_HW12/
 !phonebook/
-!requirements.txt
-!requirements_test.txt
+!requirements_base.txt
+!requirements_local.txt
 !manage.py
 !Makefile

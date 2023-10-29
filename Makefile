@@ -10,8 +10,7 @@ d-homework-i-run:
 .PHONY: init-dev
 init-dev:
 	@pip install --upgrade pip && \
-	pip install --requirement requirements.txt && \
-	pip install --requirement requirements_test.txt && \
+	pip install --requirement requirements_local.txt && \
 	pre-commit install
 
 .PHONY: proj-i-run
