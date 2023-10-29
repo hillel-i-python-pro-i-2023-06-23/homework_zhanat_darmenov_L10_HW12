@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single User</title>
+</head>
+<body>
+    <h1>Contact Details</h1>
+
+    <ul>
+        <li>Name: {{ contact.name }}</li>
+        <li>Phone: {{ contact.phone }}</li>
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Change Info">
+        <input type="submit" name="action" value="Delete Contact">
+        <input type="submit" name="action" value="Return to Start">
+    </form>
+</body>
+</html>

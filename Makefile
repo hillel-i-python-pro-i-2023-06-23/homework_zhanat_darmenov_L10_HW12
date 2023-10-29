@@ -11,6 +11,7 @@ d-homework-i-run:
 init-dev:
 	@pip install --upgrade pip && \
 	pip install --requirement requirements.txt && \
+	pip install --requirement requirements_test.txt && \
 	pre-commit install
 
 .PHONY: proj-i-run
@@ -37,8 +38,8 @@ d-stop:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker compose down
 
-.PHONY: d-purge
-d-purge:
+.PHONY: d-homework-i-purge
+d-homework-i-purge:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
 		docker compose down --volumes --remove-orphans --rmi local --timeout 0
 

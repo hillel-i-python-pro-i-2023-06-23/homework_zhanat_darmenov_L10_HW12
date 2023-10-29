@@ -2,8 +2,9 @@
 **
 
 # Exclude
-!homework_10_2_zhanat_darmenov/
-!first_app/
-!templates
-!manage.py
+!homework_zhanat_darmenov_L10_HW12/
+!phonebook/
 !requirements.txt
+!requirements_test.txt
+!manage.py
+!Makefile

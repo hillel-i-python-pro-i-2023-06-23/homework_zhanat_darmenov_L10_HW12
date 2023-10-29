@@ -13,20 +13,27 @@ RUN useradd --system ${USER} && \
 RUN apt update && apt upgrade -y
 RUN apt install -y curl
 
+# Copy the requirements file separately to leverage Docker cache
 COPY --chown=${USER} requirements.txt requirements.txt
+COPY --chown=${USER} requirements_test.txt requirements_test.txt
 
 RUN pip install --upgrade pip && \
-    pip install --requirement requirements.txt
+    pip install --requirement requirements.txt && \
+    pip install --requirement requirements_test.txt
 
+# Copy the application code into the container
+COPY --chown=${USER} ./phonebook phonebook
 COPY --chown=${USER} ./manage.py manage.py
-COPY --chown=${USER} ./templates templates
-COPY --chown=${USER} ./first_app first_app
-COPY --chown=${USER} ./homework_10_2_zhanat_darmenov homework_10_2_zhanat_darmenov
+COPY --chown=${USER} ./Makefile Makefile
 
 USER ${USER}
 
 VOLUME ${WORKDIR}/db
 
-EXPOSE 8000
+# Apply Django migrations:
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
+# EXPOSE 8000
 
 ENTRYPOINT ["python", "manage.py", "runserver"]
